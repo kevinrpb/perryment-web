@@ -1,0 +1,39 @@
+{
+  "name": "perryment-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Brocfile.js",
+  "scripts": {
+    "build": "npm run clean && broccoli build dist",
+    "deploy": "gh-pages-deploy",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "cname": "perryment.kevinrpb.me",
+    "prep": [
+      "build"
+    ],
+    "noprompt": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinrpb/perryment-web.git"
+  },
+  "author": "Kevin Romero Peces-Barba <kevinrpb@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinrpb/perryment-web/issues"
+  },
+  "homepage": "https://github.com/kevinrpb/perryment-web#readme",
+  "devDependencies": {
+    "broccoli": "^3.4.1",
+    "broccoli-eyeglass": "^6.0.0",
+    "broccoli-funnel": "^3.0.2",
+    "broccoli-merge-trees": "^4.2.0",
+    "gh-pages-deploy": "^0.5.1",
+    "node-sass": "^4.13.1",
+    "rimraf": "^3.0.2"
+  }
+}
