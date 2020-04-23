@@ -9,11 +9,13 @@ const dirs = {
     html: "",
     js: "assets/js",
     sass: "assets/sass",
+    img: "assets/img",
   },
   output: {
     html: "",
     js: "assets",
     sass: "assets",
+    img: "assets",
   },
 };
 
@@ -24,6 +26,12 @@ export default (options) => {
     include: ["*.html"],
     annotation: "HTML Files",
   });
+
+  const img = Funnel(src, {
+    srcDir: dirs.input.img,
+    destDir: dirs.output.img,
+    annotation: "Images"
+  })
 
   const js = Funnel(src, {
     srcDir: dirs.input.js,
@@ -37,5 +45,5 @@ export default (options) => {
     annotation: "SASS Sompiling"
   });
 
-  return Merge([html, js, sass]);
+  return Merge([html, img, js, sass]);
 };
