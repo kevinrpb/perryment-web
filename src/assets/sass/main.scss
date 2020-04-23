@@ -1,2 +1,63 @@
-@import "layout";
-@import "styles";
+/*
+ * Variables
+ * Colors: https://coolors.co/155263-4dcaed-954022-ff6f3c-cf9c18-ffc963-6d6875-ffd27e
+ */
+
+$white: #fff;
+$black: #000;
+$dark-blue: #155263;
+$light-blue: #4dcaed;
+$dark-orange: #954022;
+$light-orange: #ff6f3c;
+$dark-yellow: #cf9c18;
+$light-yellow: #ffc963;
+$dark-pink: #6d6875;
+$light-pink: #e5989b;
+
+$header-height: 64px;
+$header-padding: 4px;
+
+/*
+ * Base Layout
+ */
+
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: [start] 1fr [end];
+  grid-template-rows: [start] $header-height [middle] 1fr [end];
+
+  > * {
+    grid-column: start / end;
+  }
+
+  > canvas {
+    grid-row: start / end;
+    z-index: -100;
+  }
+
+  > header {
+    grid-row: start / middle;
+    padding: $header-padding;
+  }
+
+  > main {
+    grid-row: middle / end;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@import "header";
+@import "tabs";
+@import "card";

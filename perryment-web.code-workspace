@@ -6,5 +6,12 @@
     {
       "path": "src"
     }
-  ]
+  ],
+  "settings": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "off",
+    "prettier.semi": false,
+    "prettier.singleQuote": true
+  }
 }

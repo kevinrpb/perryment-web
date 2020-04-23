@@ -3,8 +3,8 @@ const canvas = document.getElementById("background-canvas"),
   gradient = new Gradient(ctx, canvas.width, canvas.height);
 
 const stopAColor = [
-	{ r: "229", g: "152", b: "155" }, //pink
-	{ r: "77", g: "202", b: "237" }, //blue
+    { r: "229", g: "152", b: "155" }, //pink
+    { r: "77", g: "202", b: "237" }, //blue
     { r: "255", g: "201", b: "99" }, //yellow
   ],
   stopBColor = [
@@ -12,6 +12,11 @@ const stopAColor = [
     { r: "229", g: "152", b: "155" }, //pink
     { r: "77", g: "202", b: "237" }, //blue
   ];
+
+const tabElements = [
+  { "data-target": "main-home" },
+  { "data-target": "main-tournaments" },
+];
 
 function loop() {
   requestFrame(loop);
@@ -39,4 +44,6 @@ function load() {
       gradient.updateSize(window.innerWidth, window.innerHeight);
     }, 200);
   });
+
+  Tabs(tabElements, true);
 }

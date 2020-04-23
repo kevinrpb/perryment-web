@@ -12,15 +12,25 @@
 
   <script src="/assets/util.js"></script>
   <script src="/assets/gradient.js"></script>
+  <script src="/assets/tabs.js"></script>
 </head>
 <body onload="load();">
 
   <canvas id="background-canvas"></canvas>
 
-  <main>
-    Hello World!
+  <header>
+    <a href="#main-home" data-target="main-home">Inicio</a>
+    <img src="/assets/perryment_logo.png" alt="Perryment Logo">
+    <a href="#main-tournaments" data-target="main-tournaments">Torneos</a>
+  </header>
+
+  <main id="main-home" tab-target tab-active>
+    home
   </main>
 
+  <main id="main-tournaments" tab-target>
+    tournaments
+  </main>
 
   <script src="/assets/main.js"></script>
 </body>
