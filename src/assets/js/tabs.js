@@ -3,7 +3,7 @@ function Tabs(elements = [], root = false) {
   function hideAll($tabs) {
     $tabs.forEach(({ $tab, $target }) => {
       $target.removeAttribute("tab-active");
-    })
+    });
   }
 
   function show($target) {
@@ -23,15 +23,20 @@ function Tabs(elements = [], root = false) {
   $tabs.forEach(({ $tab, $target }) => {
     $tab.addEventListener("click", () => {
       hideAll($tabs);
-      show($target)
-    })
-  })
+      show($target);
+    });
+  });
 
   /* Finally check if we should already change tabs (only for "root" tabs) */
-  const hash = window.location.hash;
-  if (root && hash) {
-    console.log(hash)
-    const $tab = $tabs.filter(({ $tab, $target }) => $tab.getAttribute("href") === hash)[0].$tab;
+  if (root) {
+    const hash = window.location.hash;
+
+    // theres hash? use it, otherwise just first item
+    const $tab = hash
+      ? $tabs.filter(
+          ({ $tab, $target }) => $tab.getAttribute("href") === hash
+        )[0].$tab
+      : $tabs[0].$tab;
 
     $tab.click();
   }
