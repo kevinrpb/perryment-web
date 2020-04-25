@@ -16,6 +16,11 @@ $light-pink: #e5989b;
 
 $header-height: 64px;
 $header-padding: 4px;
+$main-padding: 25px;
+
+$break-small: 600px;
+$break-medium: 900px;
+$break-large: 1400px;
 
 /*
  * Base Layout
@@ -27,9 +32,16 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
+  color: $black;
+
+  ::selection {
+    background-color: lighten($light-pink, 10%);
+  }
 }
 
 body {
+  overflow-x: hidden;
   display: grid;
   grid-template-columns: [start] 1fr [end];
   grid-template-rows: [start] $header-height [middle] 1fr [end];
@@ -39,7 +51,11 @@ body {
   }
 
   > canvas {
-    grid-row: start / end;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
     z-index: -100;
   }
 
@@ -53,8 +69,82 @@ body {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+
+    padding-top: $main-padding;
+    padding-bottom: $main-padding;
+
+    @media screen and (min-width: $break-small) {
+      padding-top: $main-padding * 2;
+    }
+
+    &#main-home {
+      transform: scale(1.2);
+      transition: all ease-in-out 200ms;
+
+      &[tab-active] {
+        transform: none;
+      }
+    }
+
+    &#main-tournaments {
+      transform: scale(0.8);
+      transition: all ease-in-out 200ms;
+
+      &[tab-active] {
+        transform: none;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    transition: all ease-in-out 100ms;
+
+    &:hover {
+      color: lighten($dark-blue, 10%);
+      border-bottom-color: lighten($dark-blue, 10%);
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 3em;
+
+    background: linear-gradient(
+      60deg,
+      $light-orange 0%,
+      $dark-yellow 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 2em;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  p {
+    text-align: justify;
+    margin-bottom: 12px;
+    line-height: 1.5;
+
+    &[center] {
+      text-align: center;
+    }
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
   }
 }
 

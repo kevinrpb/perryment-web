@@ -15,10 +15,11 @@ header {
     font-size: 2em;
     color: $white;
     text-shadow: 0px 0px 10px $dark-pink;
-    transition: all ease-in-out 100ms;
+    border-bottom: none;
 
     &:hover {
       transform: scale(1.1);
+      color: $white;
     }
   }
 

@@ -4,6 +4,7 @@
   "description": "",
   "main": "Brocfile.js",
   "scripts": {
+    "start": "npm run serve",
     "build": "npm run clean && broccoli build dist",
     "serve": "npm run build && broccoli serve",
     "deploy": "gh-pages-deploy",

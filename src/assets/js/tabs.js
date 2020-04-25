@@ -24,6 +24,12 @@ function Tabs(elements = [], root = false) {
     $tab.addEventListener("click", () => {
       hideAll($tabs);
       show($target);
+
+      setTimeout(() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      }), 100);
     });
   });
 
