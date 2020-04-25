@@ -2,11 +2,13 @@ function Tabs(elements = [], root = false) {
   /* Helpers to hide all tabs & show one */
   function hideAll($tabs) {
     $tabs.forEach(({ $tab, $target }) => {
+      $tab.removeAttribute("active");
       $target.removeAttribute("tab-active");
     });
   }
 
-  function show($target) {
+  function show({ $tab, $target }) {
+    $tab.setAttribute("active", "active");
     $target.setAttribute("tab-active", "tab-active");
   }
 
@@ -23,7 +25,7 @@ function Tabs(elements = [], root = false) {
   $tabs.forEach(({ $tab, $target }) => {
     $tab.addEventListener("click", () => {
       hideAll($tabs);
-      show($target);
+      show({ $tab, $target });
 
       setTimeout(() => window.scrollTo({
         top: 0,

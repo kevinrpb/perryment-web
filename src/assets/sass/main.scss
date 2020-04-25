@@ -95,6 +95,37 @@ body {
         transform: none;
       }
 
+      div[tabs] {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+
+        * {
+          width: 100px;
+          text-align: center;
+          font-size: 1.2em;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &[active] {
+            border-bottom: 1px solid;;
+          }
+        }
+      }
+
+      div[section] {
+        display: none;
+
+        &[tab-active] {
+          display: initial;
+        }
+      }
+
       div[brakcets] {
         iframe {
           border-radius: 6px;
@@ -158,3 +189,4 @@ body {
 @import "header";
 @import "tabs";
 @import "card";
+@import "teams";

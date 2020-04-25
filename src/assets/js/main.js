@@ -18,6 +18,13 @@ const tabElements = [
   { "data-target": "main-tournaments" },
 ];
 
+const tournamentTabElements = [
+  { "data-target": "tournament-brackets" },
+  { "data-target": "tournament-details" },
+  { "data-target": "tournament-flyer" },
+  { "data-target": "tournament-teams" },
+]
+
 function loop() {
   requestFrame(loop);
 
@@ -46,4 +53,5 @@ function load() {
   });
 
   Tabs(tabElements, true);
+  Tabs(tournamentTabElements, false)
 }
