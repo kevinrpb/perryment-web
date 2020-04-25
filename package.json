@@ -9,13 +9,14 @@
     "serve": "npm run build && broccoli serve",
     "deploy": "gh-pages-deploy",
     "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean-source": "rimraf Brocfile.js LICENSE package*.json *.code-workspace README.md src"
   },
   "gh-pages-deploy": {
     "staticpath": "dist",
     "cname": "perryment.kevinrpb.me",
     "prep": [
-      "build"
+      "build",
+      "clean-source"
     ],
     "noprompt": false
   },
