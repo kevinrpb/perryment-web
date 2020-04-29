@@ -33,6 +33,7 @@
   "homepage": "https://github.com/kevinrpb/perryment-web#readme",
   "devDependencies": {
     "broccoli": "^3.4.1",
+    "broccoli-cli": "^1.0.0",
     "broccoli-eyeglass": "^6.0.0",
     "broccoli-funnel": "^3.0.2",
     "broccoli-merge-trees": "^4.2.0",
