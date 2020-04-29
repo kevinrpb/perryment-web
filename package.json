@@ -4,6 +4,7 @@
   "description": "",
   "main": "Brocfile.js",
   "scripts": {
+    "broccoli": "broccoli",
     "start": "npm run serve",
     "build": "npm run clean && broccoli build dist",
     "serve": "npm run build && broccoli serve",
