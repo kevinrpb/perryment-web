@@ -1,9 +1,0 @@
-*[tab-target] {
-  opacity: 0;
-  z-index: -10;
-
-  &[tab-active] {
-    opacity: initial;
-    z-index: inherit;
-  }
-}
