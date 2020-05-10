@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "perryment",
+      "public": "dist/perryment",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
