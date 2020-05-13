@@ -5,6 +5,10 @@
     },
     {
       "path": "src"
+    },
+    {
+      "name": "app",
+      "path": "src/app"
     }
   ],
   "settings": {
