@@ -14,7 +14,7 @@
   },
   "gh-pages-deploy": {
     "staticpath": "dist",
-    "cname": "perryment.kevinrpb.me",
+    "cname": "perryment.com",
     "prep": [
       "build",
       "clean-source"
