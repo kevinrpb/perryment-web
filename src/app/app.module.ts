@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
 /* Component imports */
+import { MaterialModule } from './shared/material/material.module';
+
 import { AuthGuard } from './core/auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
@@ -30,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersAdminComponent } from './admin/users-admin/users-admin.component';
 
 import { Page404Component } from './page404/page404.component';
+import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { Page404Component } from './page404/page404.component';
     AdminComponent,
     UsersAdminComponent,
     Page404Component,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,7 @@ import { Page404Component } from './page404/page404.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

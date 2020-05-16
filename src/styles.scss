@@ -1,18 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --white:        #fff;
+  --black:        #000;
+  --dark-blue:    #155263;
+  --light-blue:   #4dcaed;
+  --dark-orange:  #954022;
+  --light-orange: #ff6f3c;
+  --dark-yellow:  #cf9c18;
+  --light-yellow: #ffc963;
+  --dark-pink:    #6d6875;
+  --light-pink:   #e5989b;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  --break-small:  600px;
+  --break-medium: 900px;
+  --break-large:  1400px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
 
 /* slightly transparent fallback */
-.backdrop-blur {
-  background-color: rgba(255, 255, 255, .9);
+*[backdrop-blur] {
+  background-color: rgba(200, 200, 200, .9);
 }
 
 /* if backdrop support: very transparent and blurred */
-@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
-  .backdrop-blur {
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(2em))) {
+  *[backdrop-blur] {
+    background-color: rgba(255, 255, 255, .2);
+    -webkit-backdrop-filter: blur(10px) brightness(80%);
+    backdrop-filter: blur(10px) brightness(80%);
+  }
+}
+
+/* slightly transparent fallback */
+*[blur] {
+  background-color: rgba(200, 200, 200, .9);
+}
+
+/* if backdrop support: very transparent and blurred */
+@supports ((-webkit-filter: blur(2em)) or (filter: blur(2em))) {
+  *[blur] {
     background-color: rgba(255, 255, 255, .5);
-    -webkit-backdrop-filter: blur(2em);
-    backdrop-filter: blur(2em);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
   }
 }
