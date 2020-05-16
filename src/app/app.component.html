@@ -1,1 +1,17 @@
+<ul>
+  <li>
+    <a [routerLink]="['/app/login']" routerLinkActive="active">login</a>
+  </li>
+  <li>
+    <a [routerLink]="['/page404']" routerLinkActive="active">page404</a>
+  </li>
+  <li>
+    <a [routerLink]="['/app/admin']" routerLinkActive="active">admin</a>
+  </li>
+  <li>
+    <a [routerLink]="['/app/tournaments']" routerLinkActive="active">tournaments</a>
+  </li>
+</ul>
+
 <router-outlet></router-outlet>
+<router-outlet name="section"></router-outlet>
