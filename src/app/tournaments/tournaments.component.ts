@@ -1,38 +1,77 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { switchMap, filter, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournaments',
   templateUrl: './tournaments.component.html',
   styleUrls: ['./tournaments.component.scss']
 })
-export class TournamentsComponent implements OnInit {
+export class TournamentsComponent implements OnInit, OnDestroy {
 
-  $showDetail: BehaviorSubject<boolean>;
+  $detailID: BehaviorSubject<string>;
 
   constructor(
     private _router: Router,
     private _route: ActivatedRoute
   ) {
-    this.$showDetail = new BehaviorSubject<boolean>(false);
+    this.$detailID = new BehaviorSubject<string>(null);
 
-    const outlets = _route.parent.children.filter(r => r.outlet === 'section')
+    this.setupBreadcrumb();
+  }
 
-    // Navigate to list if no aux outlet is provided
-    if (outlets.length < 1)
-      this._router.navigate([{ outlets: { section: 't-list' } }], { relativeTo: this._route });
-    else if (outlets[0].routeConfig.path === 't-detail')
-      outlets[0].paramMap.pipe(
-        switchMap(params =>
-          params['id'] ? of(true) : of(
-            this._router.navigate([{ outlets: { section: 't-list' } }], { relativeTo: this._route }))
-        )
-      )
+  /*
+   * This is a bit of a pain in the ass...
+   * Because the detail
+   */
+  private setupBreadcrumb() {
+    this._router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(
+        switchMap(async (event) : Promise<string> => {
+          console.log(event);
+
+          const outlets = this._route.parent.children.filter(r => r.outlet === 'section')
+
+          // Navigate to list if no aux outlet is provided
+          if (outlets.length < 1) {
+            this.navigateToList();
+
+            return of(null).toPromise();
+          }
+
+          // Get tid when in detail to show breadcrumb navigation
+          if (outlets[0].routeConfig.path.includes('t-detail')) {
+            const params = await outlets[0].params.pipe(first()).toPromise();
+            const tid = params['tid'];
+
+            if (!tid) {
+              this.navigateToList();
+
+              return of(null).toPromise();
+            }
+
+            return of(tid).toPromise();
+          } else {
+            return of(null).toPromise();
+          }
+        })
+      ).subscribe(this.$detailID);
+  }
+
+  private navigateToList() {
+    this._router.navigate(
+      [{ outlets: { section: 't-list' } }],
+      { relativeTo: this._route }
+    );
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.$detailID.unsubscribe();
   }
 
 }

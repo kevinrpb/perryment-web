@@ -7,8 +7,8 @@
     <a
     [routerLink]="['./', { outlets: { section: 't-list' } }]"><h1>Tournaments</h1></a>
 
-    <a *ngIf="$showDetail | async"
-    [routerLink]="['./', { outlets: { section: ['t-detail', 'id'] } }]">
+    <a *ngIf="$detailID | async as id"
+    [routerLink]="['./', { outlets: { section: ['t-detail', id] } }]">
       <mat-icon>keyboard_arrow_right</mat-icon>
       <h1>ID</h1>
     </a>

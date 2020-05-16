@@ -40,7 +40,7 @@ const routes: Routes = [
         outlet: 'section'
       },
       {
-        path: 't-detail/:id',
+        path: 't-detail/:tid',
         component: DetailTournamentsComponent,
         outlet: 'section',
       },
