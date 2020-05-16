@@ -11,6 +11,7 @@ import { ListTournamentsComponent } from './tournaments/list-tournaments/list-to
 import { Page404Component } from './page404/page404.component';
 import { AdminComponent } from './admin/admin.component';
 import { UsersAdminComponent } from './admin/users-admin/users-admin.component';
+import { DetailTournamentsComponent } from './tournaments/detail-tournaments/detail-tournaments.component';
 
 const routes: Routes = [
   /* Home */
@@ -19,52 +20,29 @@ const routes: Routes = [
     component: HomeComponent,
   },
 
-  /* App */
+  /* Auth */
   {
-    path: 'app',
-    children: [
-      /* Auth */
-      {
-        path: 'login',
-        component: LogInComponent,
-      },
+    path: 'login',
+    component: LogInComponent,
+  },
 
+  {
+    path: 'tournaments',
+    children: [
       /* Tournaments -> public section */
       {
-        path: 'tournaments',
+        path: '',
         component: TournamentsComponent,
-        children: [
-          /* Base redirect */
-          {
-            path: '',
-            redirectTo: '/app/(tournaments//section:t-list)',
-            pathMatch: 'full'
-          }
-        ]
       },
       {
         path: 't-list',
         component: ListTournamentsComponent,
         outlet: 'section'
       },
-
-      /* Admin -> private section */
       {
-        path: 'admin',
-        component: AdminComponent,
-        // canActivate: [AuthGuard],
-        children: [
-          {
-            path: '',
-            redirectTo: '/app/(admin//section:a-users)',
-            pathMatch: 'full',
-          }
-        ]
-      },
-      {
-        path: 'a-users',
-        component: UsersAdminComponent,
-        outlet: 'section'
+        path: 't-detail/:id',
+        component: DetailTournamentsComponent,
+        outlet: 'section',
       },
     ]
   },
@@ -77,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

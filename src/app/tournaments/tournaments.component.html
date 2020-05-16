@@ -1,1 +1,16 @@
-<p>tournaments works!</p>
+<mat-toolbar>
+  <a [routerLink]="['/']">
+    <img src="/assets/perryment_logo.png" alt="Perryment Logo">
+  </a>
+
+  <nav>
+    <a
+    [routerLink]="['./', { outlets: { section: 't-list' } }]"><h1>Tournaments</h1></a>
+
+    <a *ngIf="$showDetail | async"
+    [routerLink]="['./', { outlets: { section: ['t-detail', 'id'] } }]">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+      <h1>ID</h1>
+    </a>
+  </nav>
+</mat-toolbar>

@@ -17,22 +17,26 @@ import { AppComponent } from './app.component';
 /* Config imports */
 import { environment } from '../environments/environment';
 
+/* Utils */
+import { AuthGuard } from './core/auth/auth.guard';
+
 /* Component imports */
 import { MaterialModule } from './shared/material/material.module';
 
-import { AuthGuard } from './core/auth/auth.guard';
+import { CardComponent } from './shared/components/card/card.component';
 
+/* Pages */
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { ListTournamentsComponent } from './tournaments/list-tournaments/list-tournaments.component';
+import { DetailTournamentsComponent } from './tournaments/detail-tournaments/detail-tournaments.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { UsersAdminComponent } from './admin/users-admin/users-admin.component';
 
 import { Page404Component } from './page404/page404.component';
-import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { CardComponent } from './shared/components/card/card.component';
     UsersAdminComponent,
     Page404Component,
     CardComponent,
+    DetailTournamentsComponent,
   ],
   imports: [
     BrowserModule,
