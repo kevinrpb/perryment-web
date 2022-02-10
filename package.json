@@ -38,7 +38,7 @@
     "broccoli-funnel": "^3.0.2",
     "broccoli-merge-trees": "^4.2.0",
     "gh-pages-deploy": "^0.5.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "rimraf": "^3.0.2"
   }
 }
